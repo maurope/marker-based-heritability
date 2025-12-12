@@ -1,0 +1,10 @@
+trait,heritability,standard_error,ci_lower,ci_upper
+stem_width,0.0911,0.0072,0.0769,0.1039
+stem_height,0.1483,0.0073,0.1337,0.1624
+first_flower_day,0.2005,0.0075,0.1864,0.2149
+fruits_number,0.1388,0.0104,0.1194,0.1599
+fruit_length,0.9343,0.0085,0.9181,0.9514
+fruit_diameter,0.4437,0.0104,0.4236,0.4639
+fruit_weight,0.7902,0.0086,0.774,0.8069
+seeds_number,0.6425,0.008,0.6269,0.658
+yield,0.1907,0.0088,0.1741,0.2083
