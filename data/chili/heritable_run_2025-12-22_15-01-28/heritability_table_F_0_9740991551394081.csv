@@ -1,0 +1,9 @@
+trait,heritability,standard_error,ci_lower,ci_upper
+grain.yield,0.2164,0.0074,0.2024,0.2315
+grain.number,0.1716,0.0079,0.1559,0.1865
+seed.size,0.1145,0.0068,0.1013,0.1277
+anthesis,0.2049,0.0088,0.1884,0.2213
+silking,0.215,0.0084,0.1991,0.2323
+plant.height,0.0469,0.0077,0.0331,0.0634
+tassel.height,0.0679,0.009,0.0516,0.0864
+ear.height,0.0535,0.0087,0.0363,0.0694
