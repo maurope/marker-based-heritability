@@ -1,0 +1,11 @@
+trait,heritability,standard_error,ci_lower,ci_upper
+bird_width,-0.0761,0.0498,-0.1697,0.0171
+bird_TotalLength,0.0892,0.0231,0.0457,0.1364
+bird_wingspan,0.033,0.0276,-0.0225,0.0866
+bird_wing,-0.0005,0.0309,-0.058,0.059
+bird_tail,0.0675,0.024,0.0204,0.1163
+bird_tarsus,0.0533,0.0349,-0.0135,0.1214
+bird_finger,0.0237,0.0755,-0.1358,0.158
+beak_culmen,-0.0202,0.0332,-0.0862,0.0398
+beak_width,0.0846,0.0318,0.0212,0.1462
+beak_height,0.1201,0.0286,0.0627,0.1709
