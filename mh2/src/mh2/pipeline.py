@@ -23,16 +23,16 @@ def h2(markers, traits):
     start_time = time.time()
 
     # ------------------------------------------------
-    # STEP 0: Detect marker type
+    # STEP 1: Detect marker type
     # ------------------------------------------------
-    print("Step 0/5: Detecting marker type...")
+    print("Step 1/5: Detecting marker type...")
     markers_type = detect_markers_type(markers)
     print(f"Type of markers detected: {markers_type}")
 
     # ------------------------------------------------
-    # STEP 1: Preprocess markers (ONCE)
+    # STEP 2: Preprocess markers (ONCE)
     # ------------------------------------------------
-    print("Step 1/5: Preprocessing markers...")
+    print("Step 2/5: Preprocessing markers...")
 
     if markers_type == "microsatellites":
         markers_processed = markers.copy()
@@ -42,9 +42,9 @@ def h2(markers, traits):
         raise ValueError(f"Unrecognized marker type: {markers_type}")
 
     # ------------------------------------------------
-    # STEP 2: Marker-based statistics
+    # STEP 3: Marker-based statistics
     # ------------------------------------------------
-    print("Step 2/5: Computing marker-based statistics...")
+    print("Step 3/5: Computing marker-based statistics...")
 
     if markers_type == "microsatellites":
         heterozygosity_table, F = micro_heterozygosity(markers_processed)
@@ -56,9 +56,9 @@ def h2(markers, traits):
     print(f"Inbreeding coefficient F: {F}")
 
     # ------------------------------------------------
-    # STEP 3: Phenotypic similarity
+    # STEP 4: Phenotypic similarity
     # ------------------------------------------------
-    print("Step 3/5: Computing phenotypic similarity...")
+    print("Step 4/5: Computing phenotypic similarity...")
     phenotypic_similarity_table = phenotypic_similarity(traits)
 
     # ------------------------------------------------
@@ -74,14 +74,19 @@ def h2(markers, traits):
                 raise ValueError("phenotypic_similarity_table rows do not match relatedness_table pairs")
 
     # ------------------------------------------------
-    # STEP 4: Heritability
+    # STEP 5: Heritability
     # ------------------------------------------------
-    print("Step 4/5: Computing heritability...")
+    print("Step 5/5: Computing heritability...")
     heritability_table = heritability(
         r_df=relatedness_table,
         z_df=phenotypic_similarity_table,
         F=F,
     )
+
+    print(f"\nheritability_table_F_{F}:")
+    print("="*70)
+    print(heritability_table.to_string(index=False))
+    print("-"*70)
 
     # ------------------------------------------------
     # Timing and summary
