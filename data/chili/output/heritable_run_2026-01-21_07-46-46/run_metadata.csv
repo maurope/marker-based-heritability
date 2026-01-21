@@ -1,0 +1,22 @@
+[Markers Info]
+markers_type: microsatellites
+n_individuals: 25
+n_markers_initial: 6
+n_markers_used: 6
+
+[Heritability Parameters]
+n_bootstrap: 1000
+ci: 0.95
+ddof: 0
+
+[Genetic Summary]
+inbreeding_coefficient_F: 0.23
+average_observed_heterozygosity: 0.7467
+average_expected_heterozygosity: 0.9669
+
+[Runtime & System]
+runtime_seconds: 0.525
+python_version: 3.11.5 | packaged by Anaconda, Inc. | (main, Sep 11 2023, 13:26:23) [MSC v.1916 64 bit (AMD64)]
+platform: Windows-10-10.0.26100-SP0
+user: mauri
+

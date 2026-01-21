@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mh2"
+version = "0.1.0"
+description = "Marker-based heritability (h²) estimation using molecular markers"
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "MIT" }
+
+authors = [
+    { name = "Mauricio Peñuela Aristizábal", email = "mauricio.penuela@hotmail.com" }
+]
+
+keywords = [
+    "heritability",
+    "genetics",
+    "molecular-markers",
+    "SNP",
+    "microsatellites",
+    "quantitative-genetics"
+]
+
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11"
+]
+
+dependencies = [
+    "numpy",
+    "pandas"
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
