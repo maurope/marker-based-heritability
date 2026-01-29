@@ -1,0 +1,2 @@
+trait,heritability,standard_error,ci_lower,ci_upper
+Obesity.BodyLength,0.0019,0.0008,0.0004,0.0035

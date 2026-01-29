@@ -1,0 +1,23 @@
+[Markers Info]
+markers_type: SNPs
+n_individuals: 1814
+n_markers_initial: 10346
+n_markers_used: 10339
+maf_threshold: 0.05
+
+[Heritability Parameters]
+n_bootstrap: 1000
+ci: 0.95
+ddof: 0
+
+[Genetic Summary]
+inbreeding_coefficient_F: 0.03
+average_observed_heterozygosity: 0.3629
+average_expected_heterozygosity: 0.3728
+
+[Runtime & System]
+runtime_seconds: 626.2977
+python_version: 3.11.5 | packaged by Anaconda, Inc. | (main, Sep 11 2023, 13:26:23) [MSC v.1916 64 bit (AMD64)]
+platform: Windows-10-10.0.26100-SP0
+user: mauri
+
