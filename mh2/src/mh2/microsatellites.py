@@ -5,12 +5,24 @@ from .state import AnalysisState
 
 def micro_heterozygosity(df, count_nans_as_invalid=True):
     """
-    Computes observed and expected heterozygosity per column and the inbreeding coefficient F.
+    Computes observed and expected heterozygosity per column and the inbreeding
+    coefficient F.
 
-    Returns:
-        (heterozygosity_table, F)
+    - The FIRST column of df is treated as the sample/individual ID (ignored in calculations).
+    - Remaining columns are processed as genotype strings "A/B".
+    - Returns: DataFrame with rows ['observed_heterozygosity', 'expected_heterozygosity']
+      and a column 'average' (mean across loci).
+    - Creates global variables F and heterozygosity_table.
+
+    Notes:
+      - NaN cells are excluded from per-column denominators by default. Set
+        count_nans_as_invalid=False to include NaNs as invalid entries (denominator = total rows).
     """
+
+    # First column is always treated as ID
     id_col = df.columns[0]
+
+    # All other columns are genotype columns
     cols = [c for c in df.columns if c != id_col]
 
     observed = {}
@@ -19,56 +31,72 @@ def micro_heterozygosity(df, count_nans_as_invalid=True):
     for col in cols:
         series_raw = df[col]
 
+        # Handle missing values
         if count_nans_as_invalid:
             series = series_raw.dropna().astype(str)
         else:
             series = series_raw.fillna('').astype(str)
 
-        total = len(series)
-        if total == 0:
+        # Keep only valid diploid genotypes (contain "/")
+        valid_genotypes = series[series.str.contains("/")]
+
+        if len(valid_genotypes) == 0:
             observed[col] = np.nan
             expected[col] = np.nan
             continue
 
+        # ----------------------------
         # Observed heterozygosity (Ho)
+        # ----------------------------
         def is_hetero(cell):
-            if '/' not in cell:
-                return False
             L, R = cell.split('/', 1)
             return L.strip() != R.strip()
 
-        Ho = series.map(is_hetero).sum() / total
+        Ho = valid_genotypes.map(is_hetero).sum() / len(valid_genotypes)
         observed[col] = Ho
 
+        # ----------------------------
         # Expected heterozygosity (He)
-        def is_homo(cell):
-            if '/' not in cell:
-                return False
-            L, R = cell.split('/', 1)
-            return L.strip() == R.strip()
+        # Based on allele frequencies
+        # ----------------------------
+        alleles = []
 
-        homozygotes = series[series.map(is_homo)]
-        counts = homozygotes.value_counts()
-        freqs = counts / total
-        He = 1 - np.sum(freqs ** 2)
+        for cell in valid_genotypes:
+            L, R = cell.split('/', 1)
+            alleles.extend([L.strip(), R.strip()])
+
+        allele_counts = pd.Series(alleles).value_counts()
+        allele_freqs = allele_counts / allele_counts.sum()
+
+        He = 1 - np.sum(allele_freqs ** 2)
         expected[col] = He
 
-    heterozygosity_table = pd.DataFrame(
+    # Build result table
+    result = pd.DataFrame(
         [observed, expected],
         index=["observed_heterozygosity", "expected_heterozygosity"]
     )
-    heterozygosity_table["average"] = heterozygosity_table.mean(axis=1)
-    heterozygosity_table = heterozygosity_table.round(4)
 
-    Ho_avg = heterozygosity_table.loc["observed_heterozygosity", cols].mean()
-    He_avg = heterozygosity_table.loc["expected_heterozygosity", cols].mean()
-    F = round(1 - (Ho_avg / He_avg), 2) if He_avg not in [0, np.nan] else np.nan
+    result["average"] = result.mean(axis=1)
 
-    # Globals for backward compatibility
-    globals()["heterozygosity_table"] = heterozygosity_table
-    globals()["F"] = F
+    # Compute global averages and F
+    Ho_avg = result.loc["observed_heterozygosity", cols].mean()
+    He_avg = result.loc["expected_heterozygosity", cols].mean()
 
-    print("Inbreeding coefficient F:", F)
+    F_value = (
+        1 - (Ho_avg / He_avg)
+        if (He_avg is not None and not np.isnan(He_avg) and He_avg != 0)
+        else np.nan
+    )
+
+    F_value = round(F_value, 2)
+
+    # Global variables (as in original code)
+    globals()['F'] = F_value
+    globals()['heterozygosity_table'] = result.round(4)
+
+    # Print only F
+    print("Inbreeding coefficient F:", F_value)
     print("")
 
     return heterozygosity_table, F

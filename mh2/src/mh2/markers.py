@@ -29,6 +29,23 @@ def detect_markers_type(df):
 
     return markers_type
 
+def normalize_snp_alleles(genotype):
+    """
+    Normalize any diploid SNP genotype to a tuple of two alleles.
+    Accepts any separator or compact form:
+        AA, A/A, A-T, A:T, A;T, A|T, "A;A"
+    Returns:
+        tuple('A','T') or None if not interpretable as diploid SNP
+    """
+    if pd.isna(genotype):
+        return None
+    s = str(genotype).upper()
+    # Extract only valid nucleotide alleles, ignore separators
+    alleles = re.findall(r'[ACGT]', s)
+    if len(alleles) == 2:
+        return tuple(alleles)
+    return None
+
 def detect_and_convert_markers_to_012(markers_df, sample_size=1000, maf_threshold=0.05):
     """
     Detect marker format and convert SNP-like columns to 0/1/2 encoding when possible.

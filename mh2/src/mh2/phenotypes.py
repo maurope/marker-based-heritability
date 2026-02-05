@@ -137,4 +137,4 @@ def phenotypic_similarity(
     z = pd.DataFrame(results)
     phenotypic_similarity_table = z
     traits_stats = df.describe().round(2)
-    return z
+    return z, traits_stats
