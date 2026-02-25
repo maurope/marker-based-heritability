@@ -1,0 +1,12 @@
+[Markers Info]
+markers_type: SNPs
+n_individuals: 27
+n_markers_initial: 1566
+n_markers_used: 131
+maf_threshold: 0.05
+
+[Runtime & System]
+runtime_seconds: 1.6339
+python_version: 3.12.8 | packaged by Anaconda, Inc. | (main, Dec 11 2024, 16:31:09) [GCC 11.2.0]
+platform: Linux-4.4.0-26100-Microsoft-x86_64-with-glibc2.31
+user: mauro
