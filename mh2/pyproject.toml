@@ -40,6 +40,10 @@ dependencies = [
     "pandas"
 ]
 
+# 🔥 ESTO ES LO NUEVO (CLI ENTRY POINT)
+[project.scripts]
+mh2 = "mh2.pipeline:main"
+
 [tool.setuptools]
 package-dir = {"" = "src"}
 
