@@ -1,20 +1,18 @@
 **Examples**
 -----
 
-All data required to run the examples is provided in the folder data
+All files required to run the examples are provided in the folder data
 
 
 **Maize**
 -----
-Data-set consisting of average traits meassures of different varieties of maize and SNP markers
-
 
 To run the analysis execute in the terminal::
 
 	mh2 ./data/maize/maize_snps.csv ./data/maize/maize_mean_traits.csv
 
 
-Console Output::
+Console output::
 
 	Detecting markers and traits...
 	Type of markers detected: SNPs
@@ -50,7 +48,7 @@ For a F = 0.5, run::
 
 	mh2 f 0.5
 
-Console Output::
+Console output::
 
 	Recalculated heritability (h²) for F = 0.5:
 	        trait  heritability  standard_error  ci_lower  ci_upper
