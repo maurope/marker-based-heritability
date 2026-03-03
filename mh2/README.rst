@@ -65,7 +65,8 @@ This command will:
 * Create an output directory with all results
 * Save a reproducible metadata report
 
-## Output Structure
+Output Structure
+-----
 
 Each run creates a folder inside:
 
@@ -160,28 +161,3 @@ Requirements
 * Python >= 3.9
 * pandas
 * numpy
-
-License
------
-
-MIT License.
-
-Citation
------
-
-If you use **mh2** in your research, please cite:
-
-Peñuela, M. (2026). *mh2: Marker-based heritability estimation in Python.*
-
-Contributing
------
-
-Pull requests are welcome.
-Please open an issue first to discuss major changes.
-
-Development Status
------
-
-Version: 0.1.0
-Status: Beta
-Actively developed.
