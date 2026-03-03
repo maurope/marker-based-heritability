@@ -1,6 +1,0 @@
-trait,heritability,standard_error,ci_lower,ci_upper
-flower_diameter,0.0704,0.0096,0.0509,0.089
-fruit_weight,0.0335,0.0152,0.0042,0.0625
-fruit_length,0.0605,0.0143,0.0324,0.0878
-fruit_width,0.0467,0.0145,0.0182,0.0754
-fruit_height,0.1389,0.0116,0.1149,0.1617

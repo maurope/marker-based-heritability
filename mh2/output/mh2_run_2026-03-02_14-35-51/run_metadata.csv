@@ -1,2 +1,0 @@
-timestamp,user,system,python_version,markers_type,n_individuals,n_markers,F_initial,runtime_seconds
-2026-03-02_14-35-51,mauro,Linux,3.12.8,SNPs,27,132,0.74,2.801604747772217

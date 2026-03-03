@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "mh2"
 version = "0.1.0"
 description = "Marker-based heritability (h²) estimation using molecular markers"
-readme = "README.md"
+readme = "README.rst"
 requires-python = ">=3.8"
 license = { text = "MIT" }
 
@@ -40,7 +40,7 @@ dependencies = [
     "pandas"
 ]
 
-# 🔥 ESTO ES LO NUEVO (CLI ENTRY POINT)
+#  (CLI ENTRY POINT)
 [project.scripts]
 mh2 = "mh2.pipeline:main"
 
