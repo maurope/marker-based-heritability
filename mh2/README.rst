@@ -1,10 +1,14 @@
-# mh2
+**mh2**
+-----
 
 Marker-based heritability estimation in Python.
 
-|Version| |License| |Python|
 
-## Overview
+Author: Mauricio Peñuela
+https://github.com/maurope/
+
+Overview
+-----
 
 **mh2** is a Python tool to estimate narrow-sense heritability (h²)
 of continuous traits using genetic relatedness derived from
@@ -20,7 +24,8 @@ The package automatically:
 * Generates a fully reproducible output folder
 * Saves a detailed metadata report
 
-## Supported Data
+Supported Data
+-----
 
 Markers:
 - Single nucleotide polymorphisms (SNPs)
@@ -29,7 +34,8 @@ Markers:
 Traits:
 - Continuous quantitative traits
 
-## Installation
+Installation
+-----
 
 From source (recommended for development):
 
@@ -40,7 +46,8 @@ From source (recommended for development):
 
 
 
-## Basic Usage
+Basic Usage
+-----
 
 Run a complete analysis:
 
@@ -86,7 +93,8 @@ Containing:
 * heritability_table_F_<value>.csv
 * run_metadata.txt
 
-## Recalculating Heritability with a Different F
+Recalculating Heritability with a Different F
+-----
 
 After running a full analysis, you can explore how heritability
 changes under different inbreeding coefficients (F).
@@ -116,7 +124,8 @@ Examples:
   mh2 f 1.0
 
 
-## Methodological Notes
+Methodological Notes
+-----
 
 Heritability (h²) is estimated using marker-based relatedness
 combined with phenotypic similarity among individuals.
@@ -128,7 +137,9 @@ The approach assumes:
 * Properly formatted marker matrices
 * No missing or improperly encoded genotypes
 
-## Reproducibility
+
+Reproducibility
+-----
 
 Each analysis produces a `run_metadata.txt` file including:
 
@@ -143,33 +154,33 @@ Each analysis produces a `run_metadata.txt` file including:
 
 This ensures complete reproducibility of every analysis.
 
-## Requirements
+Requirements
+-----
 
 * Python >= 3.9
 * pandas
 * numpy
 
-## License
+License
+-----
 
 MIT License.
 
-## Author
-
-Mauricio Peñuela
-https://github.com/maurope/
-
-## Citation
+Citation
+-----
 
 If you use **mh2** in your research, please cite:
 
 Peñuela, M. (2026). *mh2: Marker-based heritability estimation in Python.*
 
-## Contributing
+Contributing
+-----
 
 Pull requests are welcome.
 Please open an issue first to discuss major changes.
 
-## Development Status
+Development Status
+-----
 
 Version: 0.1.0
 Status: Beta
