@@ -1,3 +1,20 @@
+**Examples and Reproducible Workflows**
+-----------------------------------
+
+This section presents curated example datasets illustrating the
+application of ``mh2`` for estimating narrow-sense heritability (h²)
+using molecular marker–derived relatedness.
+
+The datasets span different organisms and marker systems
+(SSR and SNP markers), allowing users to explore how the method
+performs across distinct genetic architectures.
+
+Each example provides the exact command-line invocation
+required to reproduce the analysis.
+
+All required input files are provided in the ``data`` directory.
+
+
 **Maize**
 -----
 
@@ -63,7 +80,6 @@ Console output::
 	   ear.height        0.0406          0.0065    0.0284    0.0530
 
 
-
 **Chili**
 -----
 
@@ -127,7 +143,10 @@ Console output::
 	Results saved in: /examples/output/mh2_run_2026-03-03_11-26-33
 	Total runtime: 0.54 seconds
 
-
+Because different marker systems capture genetic variation in distinct ways,
+the estimated heritability values may differ slightly between SSR and SNP datasets.
+These differences reflect variation in marker density and information content,
+rather than inconsistencies in the method.
 
 
 **Mice**
