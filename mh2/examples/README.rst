@@ -3,7 +3,7 @@
 
 This section presents curated example datasets illustrating the
 application of ``mh2`` for estimating narrow-sense heritability (h²)
-using molecular marker–derived relatedness.
+using molecular marker-derived relatedness.
 
 The datasets span different organisms and marker systems
 (SSR and SNP markers), allowing users to explore how the method
