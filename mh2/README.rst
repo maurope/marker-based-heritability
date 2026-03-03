@@ -1,4 +1,4 @@
-**mh2 - Marker-Based-Heritability estimation in Python**
+mh2 - Marker-Based-Heritability estimation in Python
 -----
 
 Author: Mauricio Peñuela
