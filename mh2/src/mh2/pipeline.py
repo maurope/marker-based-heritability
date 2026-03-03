@@ -139,7 +139,7 @@ def h2(obj1, obj2):
 
     lines = []
     lines.append("==========================================")
-    lines.append("MH2 RUN METADATA REPORT")
+    lines.append("mh2 RUN METADATA REPORT")
     lines.append("==========================================\n")
 
     lines.append("[Markers Info]")
@@ -186,16 +186,78 @@ def h2(obj1, obj2):
 
 def main():
 
+    # ------------------------------------------------------
+    # No arguments → show full help
+    # ------------------------------------------------------
     if len(sys.argv) < 2:
+
+        print()
+        print()
+        print("=" * 60)
+        print("      mh2 (marker-based heritability)  |  Version 0.1.0")
+        print("=" * 60)
+        print()
+        print("  Written by Mauricio Peñuela  https://github.com/maurope/")
+        print()
+        print("Description:")
+        print()
+        print(
+            "mh2 is a Python tool to estimate narrow-sense heritability "
+            "(h²) of continuous traits using genetic relatedness "
+            "derived from molecular markers."
+        )
+        print()
+        print(
+            "Supported markers: microsatellites (SSR) and "
+            "single nucleotide polymorphisms (SNPs)."
+        )
+        print()
+
         print("Usage:")
+        print("")
         print("  mh2 markers.csv traits.csv")
-        print("  mh2 f 0.5")
+        print()
+        print(
+            "This command runs the complete pipeline:\n"
+            "  • Detects marker type automatically\n"
+            "  • Computes heterozygosity and relatedness\n"
+            "  • Computes phenotypic similarity\n"
+            "  • Estimates heritability (h²)\n"
+            "  • Creates an output folder with all results\n"
+            "  • Saves a metadata report for reproducibility"
+        )
+        print("")
+        print("")
+        print("-------------------------------------------")
+        print("RECALCULATE HERITABILITY WITH A DIFFERENT F")
+        print("-------------------------------------------")
+        print("")   
+    
+        print(
+            "After running the main analysis, you may explore how the estimated\n"
+            "heritability changes under different inbreeding coefficients (F).\n\n"
+            "To do this, run:\n\n"
+            "  mh2 f <value>\n\n"
+            "This command:\n"
+            "  • Uses the relatedness and phenotypic similarity from\n"
+            "    the most recent analysis\n"
+            "  • Recalculates h² using the user-defined F value\n"
+            "  • Prints the new h² table in the terminal\n"
+            "  • Saves the result in the same output folder"
+        )
+        print("")
+        print("Examples:")
+        print("")
+        print("  mh2 f 0.1   # simulate low inbreeding")
+        print("  mh2 f 0.5   # moderate inbreeding")
+        print("  mh2 f 1.0   # complete inbreeding")
+        print()
+
         sys.exit(1)
 
     # ------------------------------------------------------
-    # Recalculate with new F
+    # Recalculate mode
     # ------------------------------------------------------
-
     if sys.argv[1] == "f":
 
         if len(sys.argv) != 3:
@@ -226,77 +288,15 @@ def main():
         new_table.to_csv(filename, index=False)
 
         print(f"\nSaved: {filename}")
+
         sys.exit(0)
 
-# ------------------------------------------------------
-# Normal execution
-# ------------------------------------------------------
-
-if len(sys.argv) != 3:
-    print()
-    print()
-    print("=" * 60)
-    print("      mh2 (marker-based heritability)  |  Version 0.1.0")
-    print("=" * 60)
-    print()
-    print("  Written by Mauricio Peñuela  https://github.com/maurope/")
-    print("")
-    print("")
-    print("Description:")
-    print()
-    print(
-        "mh2 is a Python tool to estimate narrow-sense heritability "
-        "(h²) of continuous traits using genetic relatedness "
-        "derived from molecular markers."
-    )
-    print()
-    print(
-        "Supported markers: microsatellites (SSR) and "
-        "single nucleotide polymorphisms (SNPs)."
-    )
-    print()
-
-    print("Usage:")
-    print("")
-    print("  mh2 markers.csv traits.csv")
-    print()
-    print(
-        "This command runs the complete pipeline:\n"
-        "  • Detects marker type automatically\n"
-        "  • Computes heterozygosity and relatedness\n"
-        "  • Computes phenotypic similarity\n"
-        "  • Estimates heritability (h²)\n"
-        "  • Creates an output folder with all results\n"
-        "  • Saves a metadata report for reproducibility"
-    )
-    print("")
-    print("")
-    print("-------------------------------------------")
-    print("RECALCULATE HERITABILITY WITH A DIFFERENT F")
-    print("-------------------------------------------")
-    print("")   
-    
-    print(
-        "After running the main analysis, you may explore how the estimated\n"
-        "heritability changes under different inbreeding coefficients (F).\n\n"
-        "To do this, run:\n\n"
-        "  mh2 f <value>\n\n"
-        "This command:\n"
-        "  • Uses the relatedness and phenotypic similarity from\n"
-        "    the most recent analysis\n"
-        "  • Recalculates h² using the user-defined F value\n"
-        "  • Prints the new h² table in the terminal\n"
-        "  • Saves the result in the same output folder"
-    )
-    print("")
-    print("Examples:")
-    print("")
-    print("  mh2 f 0.1   # simulate low inbreeding")
-    print("  mh2 f 0.5   # moderate inbreeding")
-    print("  mh2 f 1.0   # complete inbreeding")
-    print()
-
-    sys.exit(1)
+    # ------------------------------------------------------
+    # Normal execution
+    # ------------------------------------------------------
+    if len(sys.argv) != 3:
+        print("Usage: mh2 markers.csv traits.csv")
+        sys.exit(1)
 
     df1 = pd.read_csv(sys.argv[1])
     df2 = pd.read_csv(sys.argv[2])
@@ -304,7 +304,10 @@ if len(sys.argv) != 3:
     run_dir = h2(df1, df2)
 
     base_dir = os.path.join(os.getcwd(), "output")
-    os.makedirs(base_dir, exist_ok=True)
-
     with open(os.path.join(base_dir, "last_run.txt"), "w") as fh:
         fh.write(run_dir)
+
+
+# 🔥 THIS IS THE IMPORTANT PART
+if __name__ == "__main__":
+    main()
