@@ -1,0 +1,26 @@
+==========================================
+mh2 RUN METADATA REPORT
+==========================================
+
+[Markers Info]
+markers_type: SNPs
+n_individuals: 27
+n_traits: 5
+n_markers_initial: 1566
+n_markers_used: 131
+maf_threshold: 0.05
+
+[Heritability Parameters]
+n_bootstrap: 1000
+ci: 0.95
+ddof: 0
+
+[Genetic Summary]
+inbreeding_coefficient_F: 0.740000
+
+[Run Info]
+timestamp: 2026-03-03_11-25-47
+user: mauro
+system: Linux
+python_version: 3.12.8
+runtime_seconds: 3.3769

@@ -1,0 +1,25 @@
+==========================================
+mh2 RUN METADATA REPORT
+==========================================
+
+[Markers Info]
+markers_type: microsatellites
+n_individuals: 27
+n_traits: 5
+n_markers_initial: 10
+n_markers_used: 10
+
+[Heritability Parameters]
+n_bootstrap: 1000
+ci: 0.95
+ddof: 0
+
+[Genetic Summary]
+inbreeding_coefficient_F: 1.000000
+
+[Run Info]
+timestamp: 2026-03-03_11-26-33
+user: mauro
+system: Linux
+python_version: 3.12.8
+runtime_seconds: 0.5421
