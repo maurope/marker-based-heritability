@@ -34,7 +34,7 @@ Traits:
 Installation
 -----
 
-From source (recommended for development):
+From source:
 
 ::
 
